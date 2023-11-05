@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../context/GlobalState';
 
 const MovieControls = ({movie, type}) => {
+  const {deleteMovieFromWatchlist} = useContext(GlobalContext);
   return (
     <div className="inner-card-controls">
       {type === 'watchlist' && (
@@ -8,7 +10,7 @@ const MovieControls = ({movie, type}) => {
           <button className="ctrl-btn">
             <i className="fa-fw far fa-eye"></i>
           </button>
-          <button className="ctrl-btn">
+          <button className="ctrl-btn" onClick={() => deleteMovieFromWatchlist(movie.id)}>
             <i className="fa-fw far fa-times"></i>
           </button>
         </>
