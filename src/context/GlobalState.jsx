@@ -19,10 +19,18 @@ export const GlobalProvider = ({ children }) => {
   //actions
   const addMovieToWatchlist = (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
-  }
-
+  };
   const deleteMovieFromWatchlist = (id) => {
     dispatch({ type: "DELETE_MOVIE_FROM_WATCHLIST", payload: id });    
+  };
+  const addMovieToWatched = (movie) => {
+    dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
+  };
+  const deleteMovieFromWatched = (id) => {
+    dispatch({ type: "DELETE_MOVIE_FROM_WATCHED", payload: id });
+  };
+  const moveToWatchlist = (movie) => {
+    dispatch({ type: "MOVE_TO_WATCHLIST", payload: movie });
   }
   return (
     <GlobalContext.Provider
@@ -30,7 +38,10 @@ export const GlobalProvider = ({ children }) => {
         watchlist: state.watchlist,
         watched: state.watched,
         addMovieToWatchlist,
-        deleteMovieFromWatchlist
+        deleteMovieFromWatchlist,
+        addMovieToWatched,
+        deleteMovieFromWatched,
+        moveToWatchlist
       }}
     >
       {children}

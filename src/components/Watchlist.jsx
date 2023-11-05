@@ -9,16 +9,17 @@ const Watchlist = () => {
       <div className="container">
         <div className="header">
           <h1 className="heading">Watchlist</h1>
+          <span className="count-pill">{watchlist.length} {watchlist.length === 1 ? 'Movie' : 'Movies'}</span>
         </div>
-        <div className="movie-grid">
-          {watchlist.length > 0 ? (
-            watchlist.map((movie) => (
+        {watchlist.length > 0 ? (
+          <div className="movie-grid">
+            {watchlist.map((movie) => (
               <MovieCard key={movie.id} movie={movie} type="watchlist"/>
-            ))
-          ) : (
-            <h2 className="no-movies">No movies in your list! Add some!</h2>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <h2 className="no-movies">No movies in your list! Add some!</h2>
+        )}
       </div>
     </div>
   )
